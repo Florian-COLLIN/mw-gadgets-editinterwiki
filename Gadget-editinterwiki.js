@@ -1,5 +1,16 @@
 if ( mw.config.get("wgNamespaceNumber") === 0 ) {
 
+	var lang = mw.config.get( 'wgUserLanguage' ),
+		messages = {
+			fr: {
+				'EditInterwiki-PromptInterwikiText': 'Veuillez entrer le nom de la langue (en, de...)'
+			}
+			
+	mw.messages.set( messages.en );
+	if ( lang !== 'en' && lang in messages ) {
+		mw.messages.set( messages[lang] )
+	}
+
 	/* Code de placement dans la page */
 
 	/* Requête langue */
@@ -7,7 +18,7 @@ if ( mw.config.get("wgNamespaceNumber") === 0 ) {
 	var = langue;
 
 	function PromptInterwiki() {
-		texte = "Veuillez entrer le nom de la langue (en, de...)";
+		texte = mw.msg( 'EditInterwiki-PromptInterwikiText' );
 		return PromptInterwiki();
 	}
 
